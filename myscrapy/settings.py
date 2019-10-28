@@ -63,9 +63,16 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+SCHEDULER_PERSIST = False
+REDIS_URL = "redis://127.0.0.1:6379/1"
 ITEM_PIPELINES = {
    'myscrapy.pipelines.MyscrapyPipeline': 300,
 }
+
+RETRY_ENABLED = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
